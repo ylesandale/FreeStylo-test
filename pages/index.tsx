@@ -9,6 +9,7 @@ import {
   setFavoriteVideo,
   setLoading,
   setStartFavoriteVideo,
+  onDeleteFavoriteVideo,
 } from "../redux/appReducer";
 import Header from "../components/Header";
 import api from "./api";
@@ -82,8 +83,13 @@ export default function Home(): any {
   };
 
   const addFavoriteVideo = (payload: Video, e: any) => {
-    e.preventDefault();
-    dispatch(setFavoriteVideo(payload));
+    if (!favoriteVideos.map((item) => item.id).includes(payload.id)) {
+      e.preventDefault();
+      dispatch(setFavoriteVideo(payload));
+    } else {
+      e.preventDefault();
+      dispatch(onDeleteFavoriteVideo(payload.id));
+    }
   };
 
   const onSetLoading = () => {
