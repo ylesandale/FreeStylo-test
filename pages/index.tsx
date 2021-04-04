@@ -118,7 +118,7 @@ export default function Home(): any {
         <div className="main__content">
           <div className="content">
             {!loading ? (
-              currentVideos.length ? (
+              currentVideos && currentVideos.length ? (
                 currentVideos.map((video: Video) => (
                   <div key={video.id} className="content__item">
                     <a target="_blank" href={video.url} rel="noreferrer">
