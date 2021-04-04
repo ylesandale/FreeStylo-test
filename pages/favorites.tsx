@@ -21,7 +21,7 @@ const favorites: React.FC = () => {
       localStorage.getItem("favoriteVideos")
     );
     dispatch(setStartFavoriteVideo(localFavoriteVideos));
-  }, []);
+  }, [dispatch]);
 
   React.useEffect(() => {
     localStorage.setItem("favoriteVideos", JSON.stringify(favoriteVideos));
@@ -47,7 +47,7 @@ const favorites: React.FC = () => {
       <div className="main">
         <div className="main__content">
           <div className="content">
-            {favoriteVideos && favoriteVideos.length > 0 ? (
+            {favoriteVideos.length > 0 ? (
               favoriteVideos.map((video: Video) => (
                 <div key={video.id} className="content__item">
                   <a target="_blank" href={video.url} rel="noreferrer">
